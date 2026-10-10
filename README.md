@@ -92,6 +92,9 @@ MeridianAccess_CL
 | order by FirstSeen asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/ffcf16c8-e8c2-480f-bc55-45df0513db06" />
+
+
 </details>
 
 ### 2. Initial Access
@@ -116,6 +119,9 @@ MeridianAccess_CL
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/077fc0be-c2eb-4ca9-8087-396f87b0a5ee" />
+
+
 </details>
 
 #### 2.2 What They Pulled
@@ -137,6 +143,9 @@ MeridianAccess_CL
 | project EventTime_t, RequestUri_s, StatusCode_s, ResponseSize_s, UserAgent_s
 | order by EventTime_t asc
 ```
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/f2ae8348-9ba2-4a13-b147-218b15dd6648" />
+
 
 </details>
 
@@ -162,6 +171,8 @@ MeridianAuth_CL
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/8da49050-b800-431d-b7bd-1c25550e0df3" />
+
 </details>
 
 #### 3.2 The Road Not Taken
@@ -183,6 +194,8 @@ MeridianDefender_CL
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/10ef7277-7210-434e-9a78-727fa98a2e77" />
+
 </details>
 
 <details>
@@ -196,6 +209,9 @@ MeridianAuth_CL
 | project EventTime_t, RawMessage_s, SourceIP, TargetUser_s
 | order by EventTime_t asc
 ```
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/5b4b9df8-cf0e-4e37-94b6-7ac83464e537" />
+
 
 </details>
 
@@ -222,6 +238,8 @@ or comm_s contains "rootbash"
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/729376fc-9089-467c-808a-490ae3b78674" />
+
 </details>
 
 ### 5. Persistence
@@ -246,6 +264,8 @@ ProcBeaconGid_s
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/351def6b-1060-4913-bd65-224d213b5365" />
+
 </details>
 
 #### 5.2 Why It Survived
@@ -266,6 +286,8 @@ MeridianDefender_CL
 | project EventTime_t, EventCategory_s, RawMessage_s
 | order by EventTime_t asc
 ```
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/091b682e-5ca3-4d04-a513-acb78e11f4b8" />
 
 </details>
 
@@ -291,6 +313,8 @@ MeridianDefender_CL
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/254364a7-536b-479e-ba3b-e95bb2af954e" />
+
 </details>
 
 #### 6.2 What the Block Proves
@@ -311,6 +335,8 @@ MeridianDefender_CL
 | where RawMessage_s contains "Blocked"
 | summarize BlockedAttempts=count() by RawMessage_s
 ```
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/de20a29b-97bb-4fb5-bd0f-9e88fa67e1de" />
 
 </details>
 
@@ -333,6 +359,8 @@ MeridianMySQL_CL
 | order by EventTime_t asc
 ```
 
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/404389a5-aa9f-440f-8443-8f548255e724" />
+
 </details>
 
 #### 7.2 The Tampered File
@@ -353,6 +381,8 @@ MeridianDefender_CL
 | order by EventTime_t desc
 | project EventTime_t, RawMessage_s
 ```
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/482b5e9d-a47d-4eb5-a734-4b83c0cfefd8" />
 
 </details>
 
@@ -380,6 +410,8 @@ or RawMessage_s contains "service"
 | order by EventTime_t asc
 ```
 
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/81294f80-f455-4e71-8bf0-d30bf4697ff6" />
+
 </details>
 
 #### 8.2 Collateral Damage
@@ -401,6 +433,8 @@ MeridianDefender_CL
 | project EventTime_t, RawMessage_s
 | order by EventTime_t asc
 ```
+
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/3b6f54be-b6c6-4134-b1d9-02ca8417c8c1" />
 
 </details>
 
@@ -427,6 +461,8 @@ or comm_s has_any ("avml", "insmod", "dd")
 | order by EventTime_t asc
 ```
 
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/13e49408-82b8-48d1-a9c9-7990f4ee0399" />
+
 </details>
 
 #### 9.2 What's Still Live
@@ -445,6 +481,8 @@ MeridianSnapshot_CL
 | project EventTime_t, ProcBeaconName_s, ProcBeaconExeLink_s,
 ProcBeaconPid_s, ProcBeaconPPid_s, ProcBeaconUid_s
 ```
+
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/0fa4942c-2ead-471a-b737-6e4f81e6b212" />
 
 </details>
 
