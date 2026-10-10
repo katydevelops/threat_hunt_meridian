@@ -1,6 +1,6 @@
 # 🛡️ Meridian | Healthcare Web Portal Threat Hunt
 
-<img width="850" alt="image" src="https://github.com/user-attachments/assets/21e2b34a-6584-4329-b85e-63755c71036f" />
+<img width="1000" alt="image" src="https://github.com/user-attachments/assets/21e2b34a-6584-4329-b85e-63755c71036f" />
 
 
 **Single-host intrusion investigation · Azure Log Analytics · Kusto Query Language (KQL)**
