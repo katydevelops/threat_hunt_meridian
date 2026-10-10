@@ -347,7 +347,7 @@ MeridianMySQL_CL
 ```
 </details>
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/404389a5-aa9f-440f-8443-8f548255e724" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/404389a5-aa9f-440f-8443-8f548255e724" />
 
 #### 7.2 The Tampered File
 
@@ -369,7 +369,7 @@ MeridianDefender_CL
 ```
 </details>
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/482b5e9d-a47d-4eb5-a734-4b83c0cfefd8" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/482b5e9d-a47d-4eb5-a734-4b83c0cfefd8" />
 
 ### 8. Defense Evasion and Detection Gaps
 
@@ -396,7 +396,7 @@ or RawMessage_s contains "service"
 ```
 </details>
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/81294f80-f455-4e71-8bf0-d30bf4697ff6" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/81294f80-f455-4e71-8bf0-d30bf4697ff6" />
 
 #### 8.2 Collateral Damage
 
@@ -419,7 +419,7 @@ MeridianDefender_CL
 ```
 </details>
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/3b6f54be-b6c6-4134-b1d9-02ca8417c8c1" />
+<img width="700" alt="image" src="https://github.com/user-attachments/assets/3b6f54be-b6c6-4134-b1d9-02ca8417c8c1" />
 
 ### 9. Incident Response
 
