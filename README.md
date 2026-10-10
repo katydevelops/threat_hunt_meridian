@@ -8,6 +8,12 @@
 **Investigation type:** Threat hunting, intrusion reconstruction and incident response analysis
 
 > **Lab disclaimer:** This project documents a simulated cybersecurity incident. All systems, accounts, IP addresses and findings refer to the lab scenario, not a real healthcare breach.
+>
+> ## Threat Hunt Report
+
+The original 18-page investigation report includes screenshots of the KQL queries, results and supporting telemetry for each finding. Add the PDF to this repository and link it here:
+
+- [Full Investigation Report (PDF)](https://drive.google.com/file/d/17C5tLCQojZ3PBcWDJfArlVIxj-zdXYlC/view?usp=drive_link)
 
 ## Project Overview
 
@@ -472,14 +478,6 @@ ProcBeaconPid_s, ProcBeaconPPid_s, ProcBeaconUid_s
 The Meridian threat hunt provided hands-on practice using KQL to follow a multi-stage intrusion across several log sources. The investigation identified reconnaissance, a vulnerable web endpoint, sensitive file access, a compromised service account, privilege escalation, secondary persistence, a C2 destination, patient-data collection, defensive gaps and remaining incident-response actions.
 
 The central lesson was to evaluate **what each log proves**. A detection is not automatically a true positive, a blocked connection does not mean the process has terminated and a non-baseline file is not necessarily remediated simply because it was detected.
-
-## Supporting Evidence
-
-The original 18-page investigation report includes screenshots of the KQL queries, results and supporting telemetry for each finding. Add the PDF to this repository and link it here:
-
-- [Full Investigation Report (PDF)](https://drive.google.com/file/d/17C5tLCQojZ3PBcWDJfArlVIxj-zdXYlC/view?usp=drive_link)
-
-> **Repository setup:** Rename the uploaded report to `Meridian Threat Hunt Report - Katy Senia.pdf` and place it beside `README.md` for the link above to work. The README stands on its own without screenshots; the PDF provides the visual evidence.
 
 ---
 
