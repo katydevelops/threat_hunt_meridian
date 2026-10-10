@@ -1,4 +1,7 @@
-# Meridian | Healthcare Web Portal Threat Hunt
+# 🛡️ Meridian | Healthcare Web Portal Threat Hunt
+
+<img width="700" height="724" alt="image" src="https://github.com/user-attachments/assets/21e2b34a-6584-4329-b85e-63755c71036f" />
+
 
 **Single-host intrusion investigation · Azure Log Analytics · Kusto Query Language (KQL)**
 
@@ -9,19 +12,19 @@
 
 > **Lab disclaimer:** This project documents a simulated cybersecurity incident. All systems, accounts, IP addresses and findings refer to the lab scenario, not a real healthcare breach.
 
- ## Threat Hunt Report
+ ## 📄 Threat Hunt Report
 
-The original 18-page investigation report includes screenshots of the KQL queries, results and supporting telemetry for each finding. Add the PDF to this repository and link it here:
+The original 18-page investigation report contains the KQL results and supporting telemetry:
 
 - [Full Investigation Report (PDF)](https://drive.google.com/file/d/17C5tLCQojZ3PBcWDJfArlVIxj-zdXYlC/view?usp=drive_link)
 
-## Project Overview
+## 🎯 Project Overview
 
 This investigation reconstructs a multi-stage intrusion against the Meridian healthcare web portal using Azure Log Analytics and KQL. The hunt follows reconnaissance, path traversal, credential and SSH access, privilege escalation, persistence, command-and-control attempts, database activity, detection gaps and incident response.
 
-The main objective was not just to identify suspicious activity but to determine **what the evidence actually proves** and what still needed remediation.
+The goal was to follow the activity across different logs, separate confirmed findings from assumptions and identify what still needed remediation.
 
-### Tools and Skills
+### 🧰 Tools and Skills
 
 - **Platforms:** Microsoft Azure Log Analytics
 - **Query language:** Kusto Query Language (KQL)
@@ -29,17 +32,17 @@ The main objective was not just to identify suspicious activity but to determine
 - **Investigation techniques:** Timeline reconstruction, log correlation, threat hunting, root-cause analysis, evidence validation
 - **Framework:** MITRE ATT&CK mapping
 
-## Table of Contents
+## 🧭 Table of Contents
 
-- [Investigation Summary](#investigation-summary)
-- [Data Sources and Time Handling](#data-sources-and-time-handling)
-- [Investigation Findings](#investigation-findings)
-- [Confirmed Attack Chain](#confirmed-attack-chain)
-- [Lessons Learned](#lessons-learned)
-- [Conclusion](#conclusion)
-- [Supporting Evidence](#supporting-evidence)
+- [Investigation Summary](#-investigation-summary)
+- [Data Sources and Time Handling](#-data-sources-and-time-handling)
+- [Investigation Findings](#-investigation-findings)
+- [Attack Chain and ATT&CK Context](#-attack-chain-and-attck-context)
+- [Lessons Learned](#-lessons-learned)
+- [Conclusion](#-conclusion)
+- [Supporting Evidence](#-supporting-evidence)
 
-## Investigation Summary
+## 📌 Investigation Summary
 
 | Item | Finding |
 | --- | --- |
@@ -56,7 +59,7 @@ The main objective was not just to identify suspicious activity but to determine
 | Memory acquisition | AVML → `/tmp/evidence/memory.lime` |
 | Outstanding response action | Manual termination and removal of `health_check` |
 
-## Data Sources and Time Handling
+## 🕒 Data Sources and Time Handling
 
 | Log table | Investigative purpose |
 | --- | --- |
@@ -70,9 +73,9 @@ The main objective was not just to identify suspicious activity but to determine
 
 **Important timestamp distinction:** `TimeGenerated` represented log ingestion time, not the actual incident time. The investigation used `EventTime_t` for chronological filtering and ordering.
 
-## Investigation Findings
+## 🔎 Investigation Findings
 
-### 1. Reconnaissance
+### 1. 🔭 Reconnaissance
 
 #### 1.1 The Recon Playbook
 
@@ -95,7 +98,7 @@ MeridianAccess_CL
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/ffcf16c8-e8c2-480f-bc55-45df0513db06" />
 
-### 2. Initial Access
+### 2. 🚪 Initial Access
 
 #### 2.1 The Traversal Point
 
@@ -126,7 +129,7 @@ MeridianAccess_CL
 
 **Finding:** `/etc/passwd` and `database.conf`
 
-**Evidence interpretation:** Two HTTP 200 responses showed successful reads through the traversal parameter.
+**Evidence interpretation:** Two HTTP 200 responses are consistent with successful file retrieval through the traversal parameter. Response codes alone do not reveal the returned file contents.
 
 <details>
 <summary>View KQL query</summary>
@@ -144,7 +147,7 @@ MeridianAccess_CL
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/f2ae8348-9ba2-4a13-b147-218b15dd6648" />
 
-### 3. Credential Access
+### 3. 🔑 Credential Access
 
 #### 3.1 Borrowed Access
 
@@ -152,7 +155,7 @@ MeridianAccess_CL
 
 **Finding:** `svc_backup`
 
-**Evidence interpretation:** Authentication telemetry recorded an accepted password for `svc_backup` from `10.1.134.57` shortly after `database.conf` was read. This confirms successful password authentication, not the exact credential value.
+**Evidence interpretation:** Authentication telemetry recorded an accepted password for `svc_backup` from `10.1.134.57` shortly after `database.conf` was read. This confirms successful password authentication, not the exact credential value or how it was obtained.
 
 <details>
 <summary>View KQL query</summary>
@@ -206,7 +209,7 @@ MeridianAuth_CL
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/5b4b9df8-cf0e-4e37-94b6-7ac83464e537" />
 
-### 4. Privilege Escalation
+### 4. ⬆️ Privilege Escalation
 
 #### 4.1 The Planted Root Shell
 
@@ -232,7 +235,7 @@ or comm_s contains "rootbash"
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/729376fc-9089-467c-808a-490ae3b78674" />
 
-### 5. Persistence
+### 5. 🪝 Persistence
 
 #### 5.1 The Second Foothold
 
@@ -240,7 +243,7 @@ or comm_s contains "rootbash"
 
 **Finding:** `/opt/meridian/scripts/health_check`
 
-**Evidence interpretation:** The process snapshot showed real UID 1001 and effective UID 0, consistent with a SUID-style privilege mechanism.
+**Evidence interpretation:** The process snapshot showed real UID 1001 and effective UID 0, consistent with privileged execution. The snapshot alone does not establish how the binary was launched or made persistent.
 
 <details>
 <summary>View KQL query</summary>
@@ -279,13 +282,13 @@ MeridianDefender_CL
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/091b682e-5ca3-4d04-a513-acb78e11f4b8" />
 
-### 6. Command and Control
+### 6. 📡 Command and Control
 
 #### 6.1 Calling Home
 
 **Investigation question:** Where was the backdoor trying to connect, and did the network block neutralize it?
 
-**Finding:** `10.1.134.57:43212`; the backdoor was not neutralized
+**Finding:** Blocked attempts to `10.1.134.57:43212`; the backdoor process remained present
 
 **Evidence interpretation:** Repeated outbound blocks demonstrated network containment while repeated attempts indicated the underlying process remained active.
 
@@ -327,15 +330,15 @@ MeridianDefender_CL
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/de20a29b-97bb-4fb5-bd0f-9e88fa67e1de" />
 
-### 7. Collection
+### 7. 🗃️ Collection
 
-#### 7.1 What Left the Database
+#### 7.1 Patient Data Access
 
 **Investigation question:** What kind of application data was collected?
 
-**Finding:** Patient records
+**Finding:** Queries involving patient records
 
-**Evidence interpretation:** MySQL activity involved the `meridian_patients` database and `patients` table, identifying the affected data as patient information.
+**Evidence interpretation:** MySQL activity involved the `meridian_patients` database and `patients` table, showing activity involving patient information. These logs alone do not establish external exfiltration.
 
 <details>
 <summary>View KQL query</summary>
@@ -371,13 +374,13 @@ MeridianDefender_CL
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/482b5e9d-a47d-4eb5-a734-4b83c0cfefd8" />
 
-### 8. Defense Evasion and Detection Gaps
+### 8. 🚨 Detection Gaps
 
 #### 8.1 Signal or Setup Noise
 
 **Investigation question:** Were the early SSH-key, crontab and service detections part of the real intrusion?
 
-**Finding:** No — setup/baseline noise (false positives)
+**Finding:** Earlier setup/baseline activity, not part of the confirmed intrusion
 
 **Evidence interpretation:** The events preceded the confirmed attacker timeline and should not be attributed to the later intrusion.
 
@@ -421,7 +424,7 @@ MeridianDefender_CL
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/3b6f54be-b6c6-4134-b1d9-02ca8417c8c1" />
 
-### 9. Incident Response
+### 9. 🧯 Incident Response
 
 #### 9.1 Capturing the Evidence
 
@@ -467,7 +470,7 @@ ProcBeaconPid_s, ProcBeaconPPid_s, ProcBeaconUid_s
 
 <img width="700" alt="image" src="https://github.com/user-attachments/assets/0fa4942c-2ead-471a-b737-6e4f81e6b212" />
 
-## Confirmed Attack Chain
+## ⛓️ Attack Chain and ATT&CK Context
 
 | Stage | Confirmed finding | MITRE ATT&CK mapping from report |
 | --- | --- | --- |
@@ -476,27 +479,32 @@ ProcBeaconPid_s, ProcBeaconPPid_s, ProcBeaconUid_s
 | Credential Access | Credentials in files / `svc_backup` access | T1552.001 — Credentials In Files |
 | Valid Accounts | SSH as `svc_backup` | T1078 — Valid Accounts |
 | Privilege Escalation | `/tmp/rootbash -p` | T1548.001 — Setuid and Setgid |
-| Persistence | `/opt/meridian/scripts/health_check` | Possible T1036.005 — Match Legitimate Name or Location |
-| Command and Control | `10.1.134.57:43212` | T1071 — Application Layer Protocol |
+| Backdoor / possible persistence | `/opt/meridian/scripts/health_check` | Possible T1036.005 — Match Legitimate Name or Location |
+| Command and Control | Blocked outbound attempts to `10.1.134.57:43212` | Protocol-specific mapping not established |
 | Collection | Patient records | T1213 — Data from Information Repositories |
-| Defense Evasion | `sysmon.service` removed / logging gap | T1562.001 — Impair Defenses |
+| Detection gap | `sysmon.service` removed by an automated sweep before intrusion | Not attributed to attacker activity |
 
-*ATT&CK mappings reproduce the original investigation report. The persistence mapping was marked as possible rather than confirmed.*
+*ATT&CK mappings are analytical associations, not proof of every technique. The backdoor naming/location mapping remains tentative. The pre-intrusion removal of `sysmon.service` is a defensive-response issue, not confirmed attacker defense evasion.*
 
-## Lessons Learned
+## 💡 Lessons Learned
 
 - **Detection is not remediation.** A tool can identify a suspicious artifact without removing it
 - **Containment is not eradication.** Blocking outbound C2 connections did not terminate `health_check`
 - **Cross-source correlation matters.** The investigation required pivots between web, authentication, audit, Defender, database, network and process-snapshot telemetry
-- **Timeline context prevents false attribution.** Earlier defensive detections occurred before the confirmed intrusion and represented baseline/setup noise
+- **Timeline context prevents false attribution.** Earlier defensive detections occurred before the confirmed intrusion and were assessed as baseline/setup activity
 - **UID context matters.** Comparing real and effective UIDs exposed root-level execution from a non-root session
 - **Preserve volatile evidence.** Memory acquisition before destructive remediation can retain evidence that would otherwise disappear
 
-## Conclusion
+## 📎 Supporting Evidence
 
-The Meridian threat hunt provided hands-on practice using KQL to follow a multi-stage intrusion across several log sources. The investigation identified reconnaissance, a vulnerable web endpoint, sensitive file access, a compromised service account, privilege escalation, secondary persistence, a C2 destination, patient-data collection, defensive gaps and remaining incident-response actions.
+Each finding above includes its original KQL query and a screenshot of the relevant lab telemetry. The linked PDF provides the full investigation narrative. Screenshots document the lab results; they do not by themselves demonstrate actions outside the simulated environment.
+
+## 🏁 Conclusion
+
+The Meridian threat hunt provided hands-on practice using KQL to follow a multi-stage intrusion across several log sources. The investigation identified reconnaissance, a vulnerable web endpoint, sensitive file access, a compromised service account, privilege escalation, secondary persistence, a C2 destination, patient-data access, defensive gaps and remaining incident-response actions.
 
 The central lesson was to evaluate **what each log proves**. A detection is not automatically a true positive, a blocked connection does not mean the process has terminated and a non-baseline file is not necessarily remediated simply because it was detected.
 
 ---
+
 
