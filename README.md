@@ -14,7 +14,7 @@
 
  ## 📄 Threat Hunt Report
 
-Each finding above includes its original KQL query and a screenshot of the relevant lab telemetry. The linked PDF provides the full investigation narrative. Screenshots document the lab results; they do not by themselves demonstrate actions outside the simulated environment.
+Each finding above includes its original KQL query and a screenshot of the relevant lab telemetry. The linked PDF provides the full investigation narrative. 
 
 The original 18-page investigation report contains the KQL results and supporting telemetry:
 
