@@ -14,6 +14,8 @@
 
  ## 📄 Threat Hunt Report
 
+Each finding above includes its original KQL query and a screenshot of the relevant lab telemetry. The linked PDF provides the full investigation narrative. Screenshots document the lab results; they do not by themselves demonstrate actions outside the simulated environment.
+
 The original 18-page investigation report contains the KQL results and supporting telemetry:
 
 - [Full Investigation Report (PDF)](https://drive.google.com/file/d/17C5tLCQojZ3PBcWDJfArlVIxj-zdXYlC/view?usp=drive_link)
@@ -34,13 +36,13 @@ The goal was to follow the activity across different logs, separate confirmed fi
 
 ## 🧭 Table of Contents
 
+- [Threat Hunt Report](#-threat-hunt-report)
 - [Investigation Summary](#-investigation-summary)
 - [Data Sources and Time Handling](#-data-sources-and-time-handling)
 - [Investigation Findings](#-investigation-findings)
 - [Attack Chain and ATT&CK Context](#-attack-chain-and-attck-context)
 - [Lessons Learned](#-lessons-learned)
 - [Conclusion](#-conclusion)
-- [Supporting Evidence](#-supporting-evidence)
 
 ## 📌 Investigation Summary
 
@@ -495,9 +497,6 @@ ProcBeaconPid_s, ProcBeaconPPid_s, ProcBeaconUid_s
 - **UID context matters.** Comparing real and effective UIDs exposed root-level execution from a non-root session
 - **Preserve volatile evidence.** Memory acquisition before destructive remediation can retain evidence that would otherwise disappear
 
-## 📎 Supporting Evidence
-
-Each finding above includes its original KQL query and a screenshot of the relevant lab telemetry. The linked PDF provides the full investigation narrative. Screenshots document the lab results; they do not by themselves demonstrate actions outside the simulated environment.
 
 ## 🏁 Conclusion
 
