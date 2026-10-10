@@ -8,8 +8,8 @@
 **Investigation type:** Threat hunting, intrusion reconstruction and incident response analysis
 
 > **Lab disclaimer:** This project documents a simulated cybersecurity incident. All systems, accounts, IP addresses and findings refer to the lab scenario, not a real healthcare breach.
->
-> ## Threat Hunt Report
+
+ ## Threat Hunt Report
 
 The original 18-page investigation report includes screenshots of the KQL queries, results and supporting telemetry for each finding. Add the PDF to this repository and link it here:
 
